@@ -1,0 +1,68 @@
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url('../img/login.jpg');
+}
+
+/* style the container */
+.container {
+    background-color: #4d4d4d;
+    position : absolute;
+    width    : 900px;
+    height   : 650px;
+    left     : 50%;
+    top      : 50%;
+    margin-left : -550px; /* half of the width  */
+    margin-top  : -425px; /* half of the height */
+    opacity: 0.7;
+    padding: 80px;
+}
+
+/* bottom container */
+.submitcontainer {
+  text-align: center;
+  background-color: #666;
+  border-radius: 0px 0px 4px 4px;
+}
+
+input {
+    width: 75%;
+    padding: 20px 20px;
+    font-size: 25px;
+    margin-left: 80px;
+}
+
+img {
+    height: 200px;
+    margin-left: 350px;
+    margin-bottom: 70px;
+}
+
+.btn-group{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.inputfields{
+    display: block;
+    margin: 0 auto;
+}
+
+.submitbutton {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-group button {
+    position: relative;
+    background-color: #303030;
+    cursor: pointer;
+    float: left;
+    color: white;
+    height: 150px;
+    width: 530px;
+    font-size: 50px;
+    border-color: black;
+}
