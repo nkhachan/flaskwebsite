@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}" type="text/css" />
 </head>
 <body>
 
@@ -17,25 +17,19 @@
         <p>
             {{ form.password(size=32) }}
         </p>
+        <p>
+            {{ form.confirmpwd(size=32) }}
+        </p>
+        <p>
+            {{ form.email(size=32) }}
+        </p>
         <div style="margin-left:auto margin-right:auto">
-            {{ form.submit(size=32) }}
+            {{ form.register(size=32) }}
         </div>
     </form>
 
-    <div class="btn-group">
-        <button onclick="register()">Sign Up</button>
-        <button>Forgot Password?</button>
-    </div>
 
 </div>
 
-
 </body>
-
-<script>
-    function register() {
-        window.location.href = "/register";
-    }
-</script>
-
 </html>

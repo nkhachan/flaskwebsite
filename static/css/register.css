@@ -9,7 +9,7 @@ body {
     background-color: #4d4d4d;
     position : absolute;
     width    : 900px;
-    height   : 650px;
+    height   : 650  px;
     left     : 50%;
     top      : 50%;
     margin-left : -550px; /* half of the width  */
@@ -47,4 +47,22 @@ img {
     display: block;
     text-align: center;
     margin: 0 auto;
+}
+
+.btn-group{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.btn-group button {
+    position: relative;
+    background-color: #303030;
+    cursor: pointer;
+    float: left;
+    color: white;
+    height: 150px;
+    width: 530px;
+    font-size: 50px;
+    border-color: black;
 }
