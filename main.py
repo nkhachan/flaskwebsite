@@ -92,3 +92,6 @@ def register():
 
    return render_template('register.html', title="Register", form=form)
 
+
+if __name__ == "__main__":
+   app.run(host="0.0.0.0", port=80)
