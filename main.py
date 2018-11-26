@@ -2,8 +2,9 @@ from flask import Flask, request
 from flask_wtf import FlaskForm
 from flask import render_template
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Email
 from flask_pymongo import PyMongo
+from wtforms.fields.html5 import EmailField
 
 
 app = Flask(__name__)
@@ -21,13 +22,18 @@ class RegisterForm(FlaskForm):
    username   = StringField('Username', validators=[DataRequired()], render_kw={"placeholder": "Username"})
    email      = StringField('Email', validators=[DataRequired()], render_kw={"placeholder": "Email"})
    password   = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
-   confirmpwd = PasswordField('Confirm Password', validators=[DataRequired()], render_kw={"placeholder": "Confirm Password"})
    register   = SubmitField('Register')
+
 
 class LoginForm(FlaskForm):
    username = StringField('Username', validators=[DataRequired()], render_kw={"placeholder": "Username"})
    password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
    submit   = SubmitField('Sign In')
+
+
+class ForgotForm(FlaskForm):
+   email = EmailField('Email address', validators=[DataRequired(), Email()], render_kw={"placeholder": "Email"})
+   send   = SubmitField('Send Email')
 
 
 @app.route('/')
@@ -44,13 +50,30 @@ def showlogin():
 @app.route("/login", methods=['POST'])
 def login():
    form = LoginForm()
+
    username = request.form['username']
    password = request.form['password']
    query = user.find({"$and":[ {"username":username}, {"password":password}]})
+   id    = query[0]['_id']
+
    if (query.count() == 1):
-      print()
+      return render_template('homepage.html', title="LoggedIn", form=form, username=username, id=id)
+
    return render_template('login.html', title="Login", form=form)
 
+
+@app.route("/forgot", methods=['GET'])
+def show_forgot():
+   form = ForgotForm()
+   return render_template('forgot.html', title="Forgot", form=form)
+
+
+@app.route("/forgot", methods=['POST'])
+def forgot():
+   form  = ForgotForm()
+   email = request.form['email']
+
+   return render_template('forgot.html', title="Forgot", form=form)
 
 @app.route("/register", methods=['GET'])
 def show_register():
@@ -63,11 +86,9 @@ def register():
 
    username   = request.form['username']
    password   = request.form['password']
-   confirmpwd = request.form['confirmpwd']
    email      = request.form['email']
 
-   if (confirmpwd == password):
-      user.insert({'username': username, 'password': password, 'email': email})
+   user.insert({'username': username, 'password': password, 'email': email})
 
    return render_template('register.html', title="Register", form=form)
 

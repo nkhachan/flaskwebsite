@@ -9,7 +9,7 @@ body {
     background-color: #4d4d4d;
     position : absolute;
     width    : 900px;
-    height   : 650  px;
+    height   : 650px;
     left     : 50%;
     top      : 50%;
     margin-left : -550px; /* half of the width  */
