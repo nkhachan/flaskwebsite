@@ -1,14 +1,13 @@
-from flask import Flask, request
-from flask_wtf import FlaskForm
-from flask import render_template
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Email
-from flask_pymongo import PyMongo
-from wtforms.fields.html5 import EmailField
+import sys, os
+sys.path.append(os.getcwd() + "/APIs")
 
+from flask import Flask, request
+from flask import render_template
+from flask_pymongo import PyMongo
+from Twilio import *
+from forms import *
 
 app = Flask(__name__)
-
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 # mlab database connection
@@ -16,25 +15,6 @@ app.config['MONGO_DBNAME'] = 'website'
 app.config['MONGO_URI'] = 'mongodb://nkhachan:something65@ds056419.mlab.com:56419/website'
 mongo = PyMongo(app)
 user = mongo.db.users
-
-
-class RegisterForm(FlaskForm):
-   username   = StringField('Username', validators=[DataRequired()], render_kw={"placeholder": "Username"})
-   email      = StringField('Email', validators=[DataRequired()], render_kw={"placeholder": "Email"})
-   password   = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
-   register   = SubmitField('Register')
-
-
-class LoginForm(FlaskForm):
-   username = StringField('Username', validators=[DataRequired()], render_kw={"placeholder": "Username"})
-   password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
-   submit   = SubmitField('Sign In')
-
-
-class ForgotForm(FlaskForm):
-   email = EmailField('Email address', validators=[DataRequired(), Email()], render_kw={"placeholder": "Email"})
-   send   = SubmitField('Send Email')
-
 
 @app.route('/')
 def index():
@@ -53,12 +33,14 @@ def login():
 
    username = request.form['username']
    password = request.form['password']
-   query = user.find({"$and":[ {"username":username}, {"password":password}]})
-   id    = query[0]['_id']
+   query    = user.find({"$and":[ {"username":username}, {"password":password}]})
+   id       = query[0]['_id']
 
    if (query.count() == 1):
+      sendSMS("You logged in from " + request.remote_addr, query[0]['phone'])
       return render_template('homepage.html', title="LoggedIn", form=form, username=username, id=id)
 
+   print("Yeah it fucked")
    return render_template('login.html', title="Login", form=form)
 
 
@@ -75,10 +57,12 @@ def forgot():
 
    return render_template('forgot.html', title="Forgot", form=form)
 
+
 @app.route("/register", methods=['GET'])
 def show_register():
    form = RegisterForm()
    return render_template('register.html', title="Register", form=form)
+
 
 @app.route("/register", methods=['POST'])
 def register():
@@ -87,11 +71,12 @@ def register():
    username   = request.form['username']
    password   = request.form['password']
    email      = request.form['email']
+   phone      = request.form['phone']
 
-   user.insert({'username': username, 'password': password, 'email': email})
+   user.insert({'username': username, 'password': password, 'email': email, 'phone': phone})
 
-   return render_template('register.html', title="Register", form=form)
+   return render_template('login.html', title="Register", form=LoginForm())
 
 
 #if __name__ == "__main__":
-   #app.run(host="0.0.0.0", port=80)
+   #app.run(host="0.0.0.0", port=80)s
