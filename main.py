@@ -1,3 +1,23 @@
+'''
+To start the application type :
+
+   Activate Environment
+
+      source venv/bin/activate
+
+
+   Set environment Variable
+
+      export FLASK_APP=main.py
+
+
+   Run App
+
+      flask run
+
+
+'''
+
 import sys, os
 sys.path.append(os.getcwd() + "/APIs")
 
