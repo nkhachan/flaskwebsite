@@ -53,9 +53,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
-
-
 body
 {
     margin: 0;
@@ -193,4 +190,22 @@ body
 
 .experienceinfo {
 
+}
+
+.btn-group{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.btn-group button {
+    position: relative;
+    background-color: #303030;
+    cursor: pointer;
+    float: left;
+    color: white;
+    height: 150px;
+    width: 530px;
+    font-size: 50px;
+    border-color: black;
 }

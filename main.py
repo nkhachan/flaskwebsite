@@ -59,8 +59,6 @@ def login():
    if (query.count() == 1):
       sendSMS("You logged in from " + request.remote_addr, query[0]['phone'])
       return render_template('homepage.html', title="LoggedIn", form=form, username=username, id=id)
-
-   print("Yeah it fucked")
    return render_template('login.html', title="Login", form=form)
 
 
@@ -97,6 +95,10 @@ def register():
 
    return render_template('login.html', title="Register", form=LoginForm())
 
+
+@app.route("/hungry", methods=['GET'])
+def showhungry():
+   return render_template('hungry.html')
 
 #if __name__ == "__main__":
    #app.run(host="0.0.0.0", port=80)
