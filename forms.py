@@ -14,9 +14,8 @@ class RegisterForm(FlaskForm):
 class LoginForm(FlaskForm):
    username = StringField('Username', validators=[DataRequired()], render_kw={"placeholder": "Username"})
    password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
-   submit   = SubmitField('Sign In')
-
+   signin   = SubmitField('Sign In')
 
 class ForgotForm(FlaskForm):
-   email = EmailField('Email address', validators=[DataRequired(), Email()], render_kw={"placeholder": "Email"})
+   email  = EmailField('Email address', validators=[DataRequired(), Email()], render_kw={"placeholder": "Email"})
    send   = SubmitField('Send Email')

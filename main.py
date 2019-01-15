@@ -26,6 +26,7 @@ from flask import render_template
 from flask_pymongo import PyMongo
 from Twilio import *
 from forms import *
+from Yelp import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
@@ -35,6 +36,9 @@ app.config['MONGO_DBNAME'] = 'website'
 app.config['MONGO_URI'] = 'mongodb://nkhachan:something65@ds056419.mlab.com:56419/website'
 mongo = PyMongo(app)
 user = mongo.db.users
+
+lat = 0
+lng = 0
 
 @app.route('/')
 def index():
@@ -57,7 +61,7 @@ def login():
    id       = query[0]['_id']
 
    if (query.count() == 1):
-      sendSMS("You logged in from " + request.remote_addr, query[0]['phone'])
+      #sendSMS("You logged in from " + request.remote_addr, query[0]['phone'])
       return render_template('homepage.html', title="LoggedIn", form=form, username=username, id=id)
    return render_template('login.html', title="Login", form=form)
 
@@ -96,9 +100,21 @@ def register():
    return render_template('login.html', title="Register", form=LoginForm())
 
 
-@app.route("/hungry", methods=['GET'])
+@app.route('/sendcoords', methods = ['POST'])
+def worker():
+   global lat, lng
+   data = request.get_json()
+   lat = data[0]
+   lng = data[1]
+   return render_template("hungry.html")
+
+
+@app.route('/hungry', methods = ['GET'])
 def showhungry():
-   return render_template('hungry.html')
+   global lat, lng
+   rest = findlocalRestaurants(lat, lng)
+   print(rest["total"])
+   return render_template("hungry.html", lat=lat, lng=lng)
 
 #if __name__ == "__main__":
    #app.run(host="0.0.0.0", port=80)
