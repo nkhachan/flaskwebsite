@@ -116,5 +116,5 @@ def showhungry():
    print(rest["total"])
    return render_template("hungry.html", lat=lat, lng=lng)
 
-#if __name__ == "__main__":
-   #app.run(host="0.0.0.0", port=80)
+if __name__ == "__main__":
+   app.run(host="0.0.0.0", port=80)
