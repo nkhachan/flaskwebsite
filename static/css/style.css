@@ -108,7 +108,16 @@ img {
   opacity: 0.9;
 }
 
-#acttitle, #extitle {
-  padding-top: 5vh;
+#acttitle{
+  padding-top: 20vh;
   font-size: 5vh;
+}
+
+#extitle {
+  padding-top: 20vh;
+  font-size: 5vh;
+}
+
+#activities {
+    margin-bottom: 30vh;
 }
