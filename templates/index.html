@@ -22,16 +22,8 @@
             </div>
     </section>
 
-    <section>
-        <div class="container">
-            <img src="{{ url_for('static',filename='img/background2.jpg') }}" width="100%" height="100%">
-              <div class="text-block">
-                <p> My name is Noopur, I am an electrical
-                  <p>engineering student at UC San Diego</p>
-                  <p>interested in software development.</p>
-                   <p>Feel free to contact me :)</p>
-              </div>
-        </div>
+    <section id="main">
+          <h1>Hi!</h1>
     </section>
 
     <center id="extitle">Experience</center>
@@ -40,7 +32,7 @@
         <div class="slidingcontainer">
             <img src="{{ url_for('static',filename='img/icons/AWS.png') }}" height="200vh" width="auto">
             <div class="overlay">
-                <div class="slidingtext">Worked on Amazon Connect, a cloud-based contact center. Integrated X-Ray to monitor requests across microservices</div>
+                <div class="slidingtext">Worked on<a href="https://aws.amazon.com/connect/">Amazon Connect</a>, a cloud-based contact center. Integrated X-Ray to monitor requests across microservices</div>
             </div>
         </div>
 
@@ -58,25 +50,68 @@
         <div class="slidingcontainer">
             <img src="{{ url_for('static',filename='img/icons/swe.png') }}" height="200vh" width="auto" >
             <div class="overlay">
-                <div class="slidingtext">Outreach Chair 16' </br>Academic Chair 17'</div>
+                <div class="slidingtext">Outreach Chair 16' </br> Led engineering workshops for middle/high school girls </br> </br> Academic Chair 17' </br> Created opportunities for members to        gain technical/professional skills</div>
             </div>
         </div>
 
         <div class="slidingcontainer">
             <img src="{{ url_for('static',filename='img/icons/seds.png') }}" height="200vh" width="auto" >
             <div class="overlay">
-                <div class="slidingtext">Worked on building a working live telemetry system based on COSMOS made by Ball Aerospace. See more here!</div>
+                <div class="slidingtext">Worked on building a working live telemetry system based on COSMOS made by Ball Aerospace. See more <a href="https://github.com/nkhachan/SEDS">here!</a></div>
             </div>
         </div>
     </section>
 
     <section id="bottombar">
             <a></a>
-            <a href="https://github.com/nkhachan"><img src="{{ url_for('static',filename='img/icons/github.png') }}" width="100vh" height="auto"></a>
-            <a href="mailto:noopur.khachane@gmail.com"><img src="{{ url_for('static',filename='img/icons/mail.png') }}" width="100vh" height="auto"></a>
-            <a href="https://www.linkedin.com/in/nkhachan"><img src="{{ url_for('static',filename='img/icons/linkedin.png') }}" width="100vh" height="auto"></a>
-            <a href="{{ url_for('static',filename='resources/Resume20.pdf') }}"><img src="{{ url_for('static',filename='img/icons/resume.png') }}" width="100vh" height="auto"></a>
+            <a href="https://github.com/nkhachan"><img src="{{ url_for('static',filename='img/icons/github.png') }}" width="80vh" height="auto"></a>
+            <a href="mailto:noopur.khachane@gmail.com"><img src="{{ url_for('static',filename='img/icons/mail.png') }}" width="80vh" height="auto"></a>
+            <a href="https://www.linkedin.com/in/nkhachan"><img src="{{ url_for('static',filename='img/icons/linkedin.png') }}" width="80vh" height="auto"></a>
+            <a href="{{ url_for('static',filename='resources/Resume20.pdf') }}"><img src="{{ url_for('static',filename='img/icons/resume.png') }}" width="80vh" height="auto"></a>
             <a></a>
     </section>
+<script>
+document.addEventListener('DOMContentLoaded',function(event){
+
+  var dataText = [ "Hi! My name is Noopur", "I am a student at UC San Diego", "Feel free to contact me :)"];
+
+
+  function typeWriter(text, i, fnCallback) {
+
+    if (i < (text.length)) {
+     document.querySelector("h1").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+
+      setTimeout(function() {
+        typeWriter(text, i + 1, fnCallback)
+      }, 100);
+    }
+    else if (typeof fnCallback == 'function') {
+      setTimeout(fnCallback, 700);
+    }
+  }
+
+
+
+
+
+   function StartTextAnimation(i) {
+     if (typeof dataText[i] == 'undefined'){
+        setTimeout(function() {
+          StartTextAnimation(0);
+        }, 20000);
+     }
+    if (i < dataText[i].length) {
+     typeWriter(dataText[i], 0, function(){
+       StartTextAnimation(i + 1);
+     });
+    }
+  }
+
+
+
+  // start the text animation
+  StartTextAnimation(0);
+});
+</script>
 </body>
 </html>

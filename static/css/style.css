@@ -40,18 +40,11 @@ a:hover {
   margin-bottom:100px;
 }
 
-.container {
-  position: relative;
-}
 
-.text-block {
-  position: absolute;
-  top: 40px;
-  left: 20px;
-  color: black;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 30px;
+.typewriter {
+  margin: 20%;
+  font-size: 40px;
+  text-align: left;
 }
 
 #experience, #activities {
@@ -120,4 +113,25 @@ img {
 
 #activities {
     margin-bottom: 30vh;
+}
+
+#main {
+    margin: 20%;
+}
+
+h1 {
+    font-size: 5vh;
+
+}
+
+span {
+  border-right: .15em solid orange;
+  animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+  50% {
+    color: orange;
+    border-color: orange
+  }
 }
