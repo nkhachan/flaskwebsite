@@ -8,16 +8,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
 </head>
 <body>
-
-    <div id="fullpage">
-
-            <div class="topbar">
+    <section>
+            <div id="topbar">
+                <div id="topbar-items">
                 <a>Let's find you something to eat!</a>
                 <a>{{ lat }}</a>
                 <a>{{ lng }}</a>
+                </div>
             </div>
-
-        </section>
-    </div>
+    </section>
 </body>
 </html>

@@ -1,38 +1,70 @@
-body {
-    font-family: "Lato", sans-serif;
+body{
+  font-family: 'Work Sans', sans-serif;
+  margin: 0px;
 }
 
-.sidenav {
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
+#topbar{
+  background-color: white;
+  width:100%;
+  height: 50px;
 }
 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
+#topbar-items{
+  margin-top: 30px;
+  margin-left: 60%;
 }
 
-.sidenav a:hover {
-    color: #f1f1f1;
+a {
+  color: #566573;
+  margin-left: 40px
 }
 
-.main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
+a:hover {
+  font-weight: bold;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+.active {
+  font-weight: bold;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+
+table {
+  width: 100%
+}
+
+h2 {
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+}
+
+p {
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 35% auto;
+}
+
+.mainpic {
+  object-fit: cover;
+  width: 80%;
+  border-radius: 50%
+}
+
+.leftcol {
+  padding: 10%;
+  background-color: #273746;
+}
+
+.rightcol {
+  padding: 10%;
+  background-color: #D5D8DC;
 }

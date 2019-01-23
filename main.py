@@ -101,7 +101,7 @@ def register():
 
 
 @app.route('/sendcoords', methods = ['POST'])
-def worker():
+def sendCoords():
    global lat, lng
    data = request.get_json()
    lat = data[0]

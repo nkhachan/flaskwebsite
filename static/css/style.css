@@ -1,5 +1,6 @@
 body{
   font-family: 'Work Sans', sans-serif;
+  margin: 0px;
 }
 
 #topbar{
@@ -11,6 +12,7 @@ body{
 #topbar-items{
   margin-top: 30px;
   margin-left: 60%;
+  font-size: 2vh;
 }
 
 a {
@@ -33,46 +35,9 @@ a:hover {
   height:5%;
 }
 
-#bottombar {
-  background-color: white;
-  width:100%;
-  height: 80px;
-}
-
-#bottombar a {
-  margin-left:100px;
-  margin-right:100px;
-}
-
 #experience{
   margin-top:100px;
   margin-bottom:100px;
-}
-
-#experiencesection a {
-  margin-left:100px;
-  margin-right:100px;
-}
-
-
-#experiencesection{
-  margin-top:50px;
-  margin-bottom:50px;
-}
-
-#activities{
-  margin-top:100px;
-  margin-bottom:100px;
-}
-
-#activitysection a {
-  margin-left:100px;
-  margin-right:100px;
-}
-
-#activitysection {
-  margin-top:50px;
-  margin-bottom:50px;
 }
 
 .container {
@@ -87,4 +52,63 @@ a:hover {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 30px;
+}
+
+#experience, #activities {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 50% auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#bottombar {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  background-color: #DCDCDC;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.slidingcontainer {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: white;
+}
+
+.slidingtext {
+    position: relative;
+    text-align: center;
+    padding-left: 30%;
+    padding-right: 30%;
+    font-size: 3vh;
+    vertical-align: middle;
+}
+
+.slidingcontainer:hover .overlay {
+  opacity: 0.9;
+}
+
+#acttitle, #extitle {
+  padding-top: 5vh;
+  font-size: 5vh;
 }
