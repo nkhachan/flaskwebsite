@@ -28,13 +28,13 @@ import socket
 from forms import *
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'you-will-never-guess'
+'''app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 # mlab database connection
 app.config['MONGO_DBNAME'] = 'website'
 app.config['MONGO_URI'] = 'mongodb://nkhachan:something65@ds056419.mlab.com:56419/website'
 mongo = PyMongo(app)
-user = mongo.db.users
+user = mongo.db.users'''
 
 lat = 0
 lng = 0
@@ -46,7 +46,7 @@ def index():
    return render_template('index.html', hostname=host_name, ip=host_ip)
 
 
-@app.route("/funstuff", methods=['GET'])
+'''@app.route("/funstuff", methods=['GET'])
 def showfunstuff():
    return render_template('funstuff.html')
 
@@ -112,7 +112,7 @@ def sendCoords():
    data = request.get_json()
    lat = data[0]
    lng = data[1]
-   return render_template("hungry.html")
+   return render_template("hungry.html")'''
 
 if __name__ == "__main__":
    app.run(host="0.0.0.0", port=8080)

@@ -1,2 +1,2 @@
-docker build -t webisto .
-docker run -d -p 5000:5000 webisto --expose 80
+sudo docker build -t web .
+sudo docker run --name my-container -d -p 8080:8080 web
