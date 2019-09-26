@@ -4,10 +4,10 @@ from twilio.rest import Client
 
 #client = Client(account_sid, auth_token)
 
-def sendSMS(message, phonenumber):
+'''def sendSMS(message, phonenumber):
 
     message = client.messages.create(
                                   from_='+19404681770',
                                   body= message,
                                   to=phonenumber
-                              )
+                              )'''

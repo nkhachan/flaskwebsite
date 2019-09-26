@@ -1,7 +1,7 @@
 '''
 To start the application type :
 
-   Activate Environment
+   Activate Environment (For local?)
 
       source venv/bin/activate
 
@@ -24,9 +24,7 @@ sys.path.append(os.getcwd() + "/APIs")
 from flask import Flask, request
 from flask import render_template
 from flask_pymongo import PyMongo
-from Twilio import *
 from forms import *
-from Yelp import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
@@ -43,6 +41,11 @@ lng = 0
 @app.route('/')
 def index():
    return render_template('index.html')
+
+
+@app.route("/funstuff", methods=['GET'])
+def showfunstuff():
+   return render_template('funstuff.html')
 
 
 @app.route("/login", methods=['GET'])
