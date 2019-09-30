@@ -70,7 +70,9 @@ img {
     margin-right: auto;
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 .slidingcontainer {
   position: relative;
@@ -135,4 +137,14 @@ span {
     color: orange;
     border-color: orange
   }
+}
+
+a[ id= "experiencetag" ]:target ~ #experience article.slidingcontainer {
+-webkit-transform: translateY( 0px);
+transform: translateY( 0px );
+}
+
+a[ id= "activitytag" ]:target ~ #activities article.slidingcontainer {
+-webkit-transform: translateY( -500px );
+transform: translateY( -500px );
 }
