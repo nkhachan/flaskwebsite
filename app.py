@@ -48,7 +48,7 @@ def index():
 
 '''@app.route("/funstuff", methods=['GET'])
 def showfunstuff():
-   return render_template('funstuff.html')
+   return render_template('pipeline.html')
 
 
 @app.route("/login", methods=['GET'])

@@ -48,12 +48,23 @@ a:hover {
   text-align: left;
 }
 
-#experience, #activities {
+#activities {
   display: grid;
   align-items: center;
   grid-template-columns: 50% auto;
   margin-top: 5%;
   margin-bottom: 5%;
+}
+
+
+#experience{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 33.5% 33.5% auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  column-gap: 5%;
+  padding: 5%;
 }
 
 #bottombar {

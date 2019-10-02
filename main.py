@@ -23,9 +23,9 @@ sys.path.append(os.getcwd() + "/APIs")
 
 from flask import Flask, request
 from flask import render_template
-from flask_pymongo import PyMongo
+#from flask_pymongo import PyMongo
 import socket
-from forms import *
+#from forms import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
@@ -33,8 +33,8 @@ app.config['SECRET_KEY'] = 'you-will-never-guess'
 # mlab database connection
 app.config['MONGO_DBNAME'] = 'website'
 app.config['MONGO_URI'] = 'mongodb://nkhachan:something65@ds056419.mlab.com:56419/website'
-mongo = PyMongo(app)
-user = mongo.db.users
+#mongo = PyMongo(app)
+#user = mongo.db.users
 
 lat = 0
 lng = 0
@@ -46,9 +46,9 @@ def index():
    return render_template('index.html', hostname=host_name, ip=host_ip)
 
 
-@app.route("/funstuff", methods=['GET'])
+@app.route("/pipeline", methods=['GET'])
 def showfunstuff():
-   return render_template('funstuff.html')
+   return render_template('pipeline.html')
 
 
 @app.route("/login", methods=['GET'])
@@ -57,7 +57,7 @@ def showlogin():
    return render_template('login.html', title="Login", form=form)
 
 
-@app.route("/login", methods=['POST'])
+'''@app.route("/login", methods=['POST'])
 def login():
    form = LoginForm()
 
@@ -105,7 +105,7 @@ def register():
 
    return render_template('login.html', title="Register", form=LoginForm())
 
-
+'''
 @app.route('/sendcoords', methods = ['POST'])
 def sendCoords():
    global lat, lng

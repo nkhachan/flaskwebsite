@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Pipeline</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+</head>
+<body>
+    <section>
+            <div id="topbar">
+                <div id="topbar-items">
+                    <a style="text-decoration : none" href="/#home">Home</a>
+                    <a id="experiencetag" style="text-decoration : none" href="/#extitle">Experience</a>
+                    <a id="activitytag" style="text-decoration : none" href="/#acttitle">Activities</a>
+                    <a style="text-decoration : none" href="{{ url_for('static',filename='resources/Resume20.pdf') }}">Resume</a>
+                    <a style="text-decoration : none"  class="active" >Pipeline</a>
+                </div>
+            </div>s
+    </section>
+    <img src="{{ url_for('static',filename='img/icons/inprogress.gif') }}" style="padding-top: 5%" height="500vh">
+
+</body>
+</html>
